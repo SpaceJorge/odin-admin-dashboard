@@ -1,20 +1,35 @@
 * {
     margin: 0;
     padding: 0;
-    list-style-type: none;
     box-sizing: border-box;
+
+    list-style-type: none;
+    
   }
 :root{
     --main-color: rgba(53, 53, 247, 0.884);
 
 }
-  
+h3{
+  display: block;
+  text-align: left;
+  width: 100%;
+  /*grid-area: title;*/
+}
+@font-face {
+  font-family: fancy-font;
+  src: url(fonts/austin-webfont.woff);
+}
+@font-face {
+  font-family: mommas-font;
+  src: url(fonts/marketwritten-webfont.woff);
+}
   .container {
     text-align: center;
   
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 1fr 12fr;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 1fr 18fr;
     grid-template-areas:
       "sidebar header"
       "sidebar nav"
@@ -31,7 +46,8 @@
   
   .header {
     background-color: white;
-  
+    
+    
     grid-area: header;
     display:grid;
     grid-template-columns: 1fr;
@@ -87,11 +103,30 @@
 
   }
   .sidebar .logo{
-      grid-area: logo;
-      display: grid;
-      grid-template-columns: 1fr 4fr;
-      grid-template-areas: 
-      "image word";
+    font-family: mommas-font,sans-serif;
+    font-size: xx-large;
+    background-color: #ffff41;
+    color: var(--main-color);
+    border: 15px;
+    border-style: ridge;
+    border-color: rgb(255 6 6 / 69%);
+    /*border-right: 10px;
+    border-right-style: groove;
+    border-right-color: rgb(211, 0, 0);
+    border-radius: 48px;*/
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding-top: 7%;
+    width: 300px;
+
+    grid-area: logo;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 
+    "image word";
+  }
+  #logo-img{
+    height: 15vh;
+    
   }
   .sidebar .user-links{
       grid-area: user-links;
@@ -118,11 +153,7 @@
     grid-area: image;
  
   }
-  .logo img{
-      height: 10vh;
-      background-color: white;
-  }
-  
+
   .nav  {
     background-color: white;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -142,6 +173,9 @@
     background-color: rgba(46, 44, 44, 0.507);
     border: 4px solid var(--main-color);
     color: white;
+    font-family: fancy-font, sans-serif;
+    font-size:large;
+    
     padding: 16px 16px;
     border-radius: 12px;
     text-align: center;
@@ -152,23 +186,27 @@
   
   .main-content {
     background-color: #bccbde;
-  
+    font-family: mommas-font, sans-serif;
+    font-size: 125%;
     grid-area: content;
     display: grid;
-    resize:both;
-    overflow: auto;
-    /*grid-template-rows: repeat(2, max( 200px,1fr));*/
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    /*grid-auto-rows: max(200px,1fr);
-    grid-auto-flow: column;*/
-    gap:15px;
-    
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "projects right-bar";
+    gap:4px;
   }
-  
+  .right-bar{
+    grid-area: right-bar;
+    display: flex;
+    flex-direction: column;
+  }
+  .projects{
+    
+    grid-area: projects;
+    display: flex;
+    flex-direction: column;
+  }
   .main-content p {
-    font-size: 18px;
-    font-family: sans-serif;
-    color: white;
     text-align: left;
   }
   
@@ -176,9 +214,16 @@
     background-color: #FFFFFF;
     color: black;
     text-align: center;
-    height:200px;
+    /*height:200px;*/
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    
   }
-  
+  .projects .card{
+    border-radius: 8px;
+    border-left-color: rgba(255, 255, 0, 0.747);
+    border-left-width: 20px;
+    border-left-style: double;
+  }
   .card p {
     color: black;
     font-weight: normal;
@@ -190,3 +235,40 @@
     text-align: center;
   }
   
+
+
+  .projects .cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: row;
+    gap: 10px;
+    /*grid-area: card;*/
+  }
+  .main-content .announcements{
+    grid-area: announcements;
+
+  }
+  .side-data .card p{
+    font-size: xx-small;
+  }
+  .main-content .trending{
+    grid-area: trending;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .side-data .card{
+    border-bottom: 5px;
+    border-bottom-style: groove;
+    border-bottom-color: rgb(211, 0, 0);
+    border-radius: 16px;
+    
+  }
+  .side-data .user{
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 4px;
+  }
+
